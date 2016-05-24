@@ -1,5 +1,6 @@
 spring:
   profiles:
+#   active: native
    active: cloud
   cloud:
     config:
@@ -35,12 +36,12 @@ eureka:
   preferSameZone: true
   shouldUseDns: true
   serviceUrl:
-    default: http://ec2-50-16-33-110.compute-1.amazonaws.com/eureka
+    default: http://ip-172-31-31-79.ec2.internal:8080/eureka
   client:
     region: us-east-1
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://ec2-50-16-33-110.compute-1.amazonaws.com/eureka
+      defaultZone: http://ip-172-31-31-79.ec2.internal:8080/eureka
       us-east-1a: http://ec2-50-16-33-110.compute-1.amazonaws.com/eureka
   us-east-1:
       availabilityZones: us-east-1a

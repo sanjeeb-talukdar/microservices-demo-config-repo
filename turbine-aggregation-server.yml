@@ -1,13 +1,13 @@
 spring:
   application:
-    name: turbine-server
+    name: turbine-aggregation-server
   cloud:
     config:
       enabled: true
       uri: http://localhost:8888           
 
 info:
-  component: Turbine Server
+  component: Turbine Aggregation Server
   
 endpoints:
   restart:

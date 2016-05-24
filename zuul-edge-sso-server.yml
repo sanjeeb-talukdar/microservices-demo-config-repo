@@ -2,11 +2,12 @@ spring:
   aop:
     proxy-target-class: true
   application:
-    name: edge-zuul-sso-ui-server
+    name: zuul-edge-sso-server
   cloud:
     config:
       enabled: true
-      uri: http://localhost:8888           
+      uri: http://ec2-52-2-175-131.compute-1.amazonaws.com/
+#      uri: http://localhost:8888           
 
 info:
   component: Edge Server Zuul (API Gateway + SSO + Login UI)
@@ -19,32 +20,44 @@ endpoints:
   health:
     sensitive: false
 
-server:
-  port: 9991
+#server:
+#  port: 9991
 
-management:
-  port: 8983
+#management:
+#  port: 8983
 
 eureka:
+  name: zuul-edge-sso-server
+  awsAccessId: AKIAIXPIFMO634VRHDWA
+  awsSecretKey: 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
+  preferSameZone: true
+  shouldUseDns: true
+  serviceUrl:
+    default: http://ec2-52-203-244-180.compute-1.amazonaws.com/eureka
   client:
+    region: us-east-1
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://ec2-52-203-244-180.compute-1.amazonaws.com/eureka
+      us-east-1a: http://ec2-52-203-244-180.compute-1.amazonaws.com/eureka
+  us-east-1:
+      availabilityZones: us-east-1a
   instance:
+#    hostname: sansoft-spring-cloud-config-server.us-east-1.elasticbeanstalk.com
+#    non-secure-port: 80
     leaseRenewalIntervalInSeconds: 10
     statusPageUrlPath: /info
     healthCheckUrlPath: /health
-    metadataMap:
-      instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+ #   metadataMap:
+ #     instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}
       
 logging:
-  level: 
-    com.netflix.discovery: 'TRACE'
-    org.springframework.cloud: 'TRACE'
-    org.springframework.boot: 'TRACE'
-    org.springframework.context: 'TRACE'
-    org.springframework.integration: 'TRACE'
-    org.springframework: 'TRACE'
+  level:
+    ROOT: 'ERROR'
+    org.springframework.web: 'ERROR'
+    org.springframework.cloud: 'ERROR'
+    org.springframework.boot: 'ERROR'
+    org.springframework: 'ERROR'
     
 zuul:
 #  ignoredServices: "*"
@@ -52,6 +65,7 @@ zuul:
     transactions-api-service: /account-transactions/**
     accounts-api-service: /account-details/**
     oauth2-jwt-server: /auth/**
+    products-api-server: /products/**
 
 debug: true
 
@@ -60,8 +74,8 @@ security:
     password: none
   oauth2:
     client:
-      accessTokenUri: http://localhost:9999/oauth/token
-      userAuthorizationUri: http://localhost:9999/oauth/authorize
+      accessTokenUri: http://sansoft-oauth2-jwt-identity-server.us-east-1.elasticbeanstalk.com/oauth/token
+      userAuthorizationUri: http://sansoft-oauth2-jwt-identity-server.us-east-1.elasticbeanstalk.com/oauth/authorize
       clientId: maybank-client
       clientSecret: maybank-client-secret
     resource:
