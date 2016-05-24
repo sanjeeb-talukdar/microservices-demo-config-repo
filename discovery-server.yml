@@ -6,7 +6,7 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: http://ec2-52-72-100-22.compute-1.amazonaws.com:80/      
+      uri: http://ec2-52-72-100-22.compute-1.amazonaws.com/      
 
 info:
   component: Discovery Server Eureka (Service Registry)
@@ -19,8 +19,8 @@ endpoints:
   health:
     sensitive: false
 
-server:
-  port: 80
+#server:
+#  port: 80
 
 #management:
 #  port: 8994
@@ -58,7 +58,7 @@ eureka:
    name: discovery-server
    shouldUseDns: true
    preferSameZone: true
-   vipAddress: ec2-50-16-33-110.compute-1.amazonaws.com
+ #  vipAddress: ec2-50-16-33-110.compute-1.amazonaws.com
    region:
      us-east-1
    us-east-1:
@@ -66,13 +66,14 @@ eureka:
    serviceUrl:
       us-east-1a: http://ec2-50-16-33-110.compute-1.amazonaws.com/eureka
    instance:   
-     hostname: ip-172-31-58-121.ec2.internal
+ #    hostname: ip-172-31-58-121.ec2.internal
      leaseRenewalIntervalInSeconds: 10
      statusPageUrlPath: /info
      healthCheckUrlPath: /health
-     metadataMap:
-      instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+#     metadataMap:
+#      instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}
    client:
+     region: us-east-1
      registerWithEureka: false
      fetchRegistry: false
      serviceUrl:
@@ -83,11 +84,7 @@ eureka:
 logging:
   level:
     ROOT: 'ERROR'
-    org.springframework.web: 'ERROR'
-    org.springframework.cloud: 'ERROR'
-    org.springframework.boot: 'ERROR'
-    org.springframework: 'ERROR'
- 
-      
-      
-    
+    org.springframework.web: ERROR
+    org.springframework.cloud: ERROR
+    org.springframework.boot: ERROR
+    org.springframework: ERROR
