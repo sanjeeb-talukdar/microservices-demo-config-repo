@@ -4,7 +4,8 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: http://localhost:8888           
+      uri: http://ec2-52-2-175-131.compute-1.amazonaws.com/
+#      uri: http://localhost:8888           
 
 info:
   component: Turbine Aggregation Server
@@ -17,37 +18,62 @@ endpoints:
   health:
     sensitive: false
 
-server:
-  port: 8989
+#server:
+#  port: 8989
 
-management:
-  port: 8990
+#management:
+#  port: 8990
 
 eureka:
+  name: turbine-aggregation-server
+  awsAccessId: AKIAIXPIFMO634VRHDWA
+  awsSecretKey: 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
+  preferSameZone: true
+  shouldUseDns: true
+  serviceUrl:
+    default: http://ec2-52-203-244-180.compute-1.amazonaws.com/eureka
   client:
+    region: us-east-1
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://ec2-52-203-244-180.compute-1.amazonaws.com/eureka
+      us-east-1a: http://ec2-52-203-244-180.compute-1.amazonaws.com/eureka
+  us-east-1:
+      availabilityZones: us-east-1a
   instance:
+    hostname: ec2-52-23-231-21.compute-1.amazonaws.com
+    non-secure-port: 80
     leaseRenewalIntervalInSeconds: 10
     statusPageUrlPath: /info
     healthCheckUrlPath: /health
-    metadataMap:
-      instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+ #   metadataMap:
+ #     instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}
       
 logging:
-  level: 
-    com.netflix.discovery: 'TRACE'
-    org.springframework.cloud: 'TRACE'
-    org.springframework.boot: 'TRACE'
-    org.springframework.context: 'TRACE'
-    org.springframework.integration: 'TRACE'
+  level:
+    ROOT: 'ERROR'
+    org.springframework.web: 'ERROR'
+    org.springframework.cloud: 'ERROR'
+    org.springframework.boot: 'ERROR'
+    org.springframework: 'ERROR'
+ 
+#################################
+# Turbine 
+#################################
+#turbine:
+#   aggregator:
+#      clusterConfig: myCluster
+#   instanceUrlSuffix:
+#      myCluster: /hystrix.stream
+#   ConfigPropertyBasedDiscovery:
+#      myCluster:
+#        instances: localhost:8082,localhost:8083
 
 turbine:
   instanceInsertPort:
      default: false
   combineHostPort: true
-  appConfig: transactions-api-service, accounts-api-service
+  appConfig: transactions-api-service, accounts-api-service, products-api-service, products-composite-service, accounts-composite-service
   clusterNameExpression: new String("default")
 
 
