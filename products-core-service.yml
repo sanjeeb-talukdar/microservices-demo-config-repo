@@ -1,15 +1,15 @@
 spring:
   application:
-    name: products-api-service
+    name: products-core-service
   cloud:
     config:
       enabled: true
       uri: http://ec2-52-2-175-131.compute-1.amazonaws.com/
-#      uri: http://localhost:8888 
+#     uri: http://localhost:8888    
+            
 info:
   component: Products Core Service
-
-
+  
 endpoints:
   restart:
     enabled: true
@@ -35,7 +35,7 @@ eureka:
   us-east-1:
       availabilityZones: us-east-1a
   instance:
-    hostname: ec2-54-87-154-117.compute-1.amazonaws.com
+    hostname: ec2-54-152-138-225.compute-1.amazonaws.com
     non-secure-port: 80
     leaseRenewalIntervalInSeconds: 10
     statusPageUrlPath: /info
@@ -50,4 +50,3 @@ logging:
     org.springframework.cloud: 'ERROR'
     org.springframework.boot: 'ERROR'
     org.springframework: 'ERROR'
- 

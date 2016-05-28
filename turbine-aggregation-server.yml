@@ -41,7 +41,7 @@ eureka:
   us-east-1:
       availabilityZones: us-east-1a
   instance:
-    hostname: ec2-52-23-231-21.compute-1.amazonaws.com
+    hostname: ec2-52-207-232-182.compute-1.amazonaws.com
     non-secure-port: 80
     leaseRenewalIntervalInSeconds: 10
     statusPageUrlPath: /info
