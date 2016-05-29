@@ -8,7 +8,7 @@ spring:
 #      uri: http://localhost:8888           
 
 info:
-  component: Transactions API Service
+  component: Accounts API Service
   
 endpoints:
   restart:
