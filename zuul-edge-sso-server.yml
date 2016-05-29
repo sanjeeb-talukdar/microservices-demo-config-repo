@@ -65,7 +65,7 @@ zuul:
     transactions-api-service: /account-transactions/**
     accounts-api-service: /account-details/**
     oauth2-jwt-identity-server: /auth/**
-    products-api-server: /product-catalogue/**
+    products-api-service: /product-catalogue/**
 
 debug: true
 
