@@ -5,7 +5,13 @@ spring:
     config:
       enabled: true
       uri: http://ec2-52-2-175-131.compute-1.amazonaws.com/
-#     uri: http://localhost:8888    
+  h2:
+    console:
+       enabled: true
+       path: /console
+       settings:
+         trace: true
+         web-allow-others: true   
             
 info:
   component: Pricing Core Service
@@ -50,3 +56,4 @@ logging:
     org.springframework.cloud: 'ERROR'
     org.springframework.boot: 'ERROR'
     org.springframework: 'ERROR'
+ 
