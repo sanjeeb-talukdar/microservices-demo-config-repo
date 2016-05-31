@@ -62,7 +62,9 @@ eureka:
     registerWithEureka: true
     serviceUrl:
       defaultZone: http://ip-172-31-12-87.ec2.internal:8080/eureka
-      
+  instance: 
+    hostname: ec2-52-90-165-34.compute-1.amazonaws.com
+    non-secure-port: 80    
 #    waitTimeInMsWhenSyncEmpty: 0
 #   awsAccessId: AKIAIXPIFMO634VRHDWA
 #   awsSecretKey: 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
