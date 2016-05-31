@@ -1,8 +1,12 @@
 spring:
+  profiles:
+    active: cloud
   application:
     name: pricing-core-service
   cloud:
     config:
+      discovery:
+        enabled: true
       enabled: true
       uri: http://172.31.6.132/
   h2:
@@ -41,13 +45,16 @@ eureka:
   us-east-1:
       availabilityZones: us-east-1a
   instance:
-    hostname: ec2-54-85-89-255.compute-1.amazonaws.com
-    ip-address: 172.31.0.95
-    prefer-ip-address: true
+    hostname: ip-172-31-0-95.ec2.internal
     non-secure-port: 80
+    ip-address: 172-31-0-95
+    prefer-ip-address: true
+    virtual-host-name: ec2-54-85-89-255.compute-1.amazonaws.com
     leaseRenewalIntervalInSeconds: 10
     statusPageUrlPath: /info
     healthCheckUrlPath: /health
+    app-group-name: micro-service
+    appname: pricing-core-service
  #   metadataMap:
  #     instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}
       
@@ -58,4 +65,3 @@ logging:
     org.springframework.cloud: 'ERROR'
     org.springframework.boot: 'ERROR'
     org.springframework: 'ERROR'
- 
