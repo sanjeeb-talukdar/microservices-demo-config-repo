@@ -34,9 +34,9 @@ eureka:
     serviceUrl:
       defaultZone: http://172.31.12.87/eureka
   instance:    
-      hostname: ip-172-31-13-248.ec2.internal
-      non-secure-port: 80
-      virtual-host-name: ec2-52-23-235-69.compute-1.amazonaws.com
+      hostname: ec2-52-23-235-69.compute-1.amazonaws.com
+ #     non-secure-port: 80
+ #     virtual-host-name: 
       
 #  name: oauth2-jwt-identity-server
 #  awsAccessId: AKIAIXPIFMO634VRHDWA
