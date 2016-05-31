@@ -8,7 +8,7 @@ spring:
       discovery:
         enabled: true
       enabled: true
-      uri: http://172.31.6.132/      
+      uri: http://ip-172-31-6-132.ec2.internal:8080/      
 
 info:
   component: Discovery Server Eureka (Service Registry)
@@ -58,13 +58,11 @@ eureka:
   server:
      a-wsaccess-id: AKIAIXPIFMO634VRHDWA
      a-wssecret-key: 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
-  client:
-    registerWithEureka: true
-    serviceUrl:
-      defaultZone: http://ip-172-31-12-87.ec2.internal:8080/eureka
-  instance: 
-    hostname: ec2-52-90-165-34.compute-1.amazonaws.com
-    non-secure-port: 80    
+#  client:
+#    registerWithEureka: false
+#    serviceUrl:
+#      defaultZone: http://ip-172-31-12-87.ec2.internal:8080/eureka
+
 #    waitTimeInMsWhenSyncEmpty: 0
 #   awsAccessId: AKIAIXPIFMO634VRHDWA
 #   awsSecretKey: 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
