@@ -5,8 +5,6 @@ spring:
     name: eureka-discovery-server
   cloud:
     config:
-      discovery:
-        enabled: true
       enabled: true
       uri: http://ip-172-31-6-132.ec2.internal:8080/      
 
@@ -56,44 +54,21 @@ endpoints:
 #eureka.eurekaServer.domainName=mydomain.com
 eureka:
   server:
+     waitTimeInMsWhenSyncEmpty: 0
      a-wsaccess-id: AKIAIXPIFMO634VRHDWA
      a-wssecret-key: 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
-#  client:
-#    registerWithEureka: false
-#    serviceUrl:
-#      defaultZone: http://ip-172-31-12-87.ec2.internal:8080/eureka
-
-#    waitTimeInMsWhenSyncEmpty: 0
-#   awsAccessId: AKIAIXPIFMO634VRHDWA
-#   awsSecretKey: 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
-#   name: eureka-discovery-server
-#   shouldUseDns: true
-#   preferSameZone: true
-#   vipAddress: 172.31.12.87
-#   region:
-#     us-east-1
-#   us-east-1:
-#      availabilityZones: us-east-1a
-#   serviceUrl:
-#      us-east-1a: http://172.31.12.87/eureka
-#   instance:   
-#     hostname: ip-172-31-12-87.ec2.internal
-#     non-secure-port: 80
-#     ip-address: 172.31.12.87
-#     prefer-ip-address: true
-#     virtual-host-name: ec2-52-90-165-34.compute-1.amazonaws.com
-#     leaseRenewalIntervalInSeconds: 10
-#     statusPageUrlPath: /info
-#     healthCheckUrlPath: /health
-#     app-group-name: micro-service
-#     appname: eureka-discovery-server
-#     metadataMap:
-#      instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${server.port}}
-   
-#    region: us-east-1
-    
-#      us-east-1a: http://172.31.12.87/eureka  
-   
+  instance: 
+     hostname: ec2-52-90-165-34.compute-1.amazonaws.com
+     non-secure-port: 80
+     leaseRenewalIntervalInSeconds: 10
+     statusPageUrlPath: /info
+     healthCheckUrlPath: /health
+  client:
+    region: us-east-1
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://ec2-52-90-165-34.compute-1.amazonaws.com/eureka
+      us-east-1a: http://ec2-52-90-165-34.compute-1.amazonaws.com/eureka  
  
 logging:
   level:
