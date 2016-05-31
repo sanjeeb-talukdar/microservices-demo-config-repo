@@ -42,6 +42,8 @@ eureka:
       availabilityZones: us-east-1a
   instance:
     hostname: ec2-54-85-89-255.compute-1.amazonaws.com
+    ip-address: 172.31.0.95
+    prefer-ip-address: true
     non-secure-port: 80
     leaseRenewalIntervalInSeconds: 10
     statusPageUrlPath: /info
