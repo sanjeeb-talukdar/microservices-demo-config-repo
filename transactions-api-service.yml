@@ -8,7 +8,7 @@ spring:
       discovery:
         enabled: true
       enabled: true
-      uri: http://ip-172-31-6-132.ec2.internal:8080/
+      uri: http://sansoft-spring-cloud-config-server.us-east-1.elasticbeanstalk.com/
 
 info:
   component: Transactions API Service
@@ -24,7 +24,7 @@ endpoints:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://ip-172-31-12-87.ec2.internal:8080/eureka
+      defaultZone: http://sansoft-eureka-discovery-server.us-east-1.elasticbeanstalk.com/eureka
       
 logging:
   level:

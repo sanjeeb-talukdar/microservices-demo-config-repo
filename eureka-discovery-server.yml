@@ -6,7 +6,7 @@ spring:
   cloud:
     config:
       enabled: true
-      uri: http://ip-172-31-6-132.ec2.internal:8080/     
+      uri: http://sansoft-spring-cloud-config-server.us-east-1.elasticbeanstalk.com/     
 
 info:
   component: Discovery Server Eureka (Service Registry)
@@ -28,11 +28,11 @@ eureka:
    region:
      us-east-1
    us-east-1:
-      availabilityZones: us-east-1a
+      availabilityZones: us-east-1b
    serviceUrl:
-      us-east-1a: http://ec2-52-90-165-34.compute-1.amazonaws.com/eureka
+      us-east-1b: http://sansoft-eureka-discovery-server.us-east-1.elasticbeanstalk.com/eureka
    instance:   
-     hostname: ec2-52-90-165-34.compute-1.amazonaws.com
+     hostname: sansoft-eureka-discovery-server.us-east-1.elasticbeanstalk.com
      non-secure-port: 80
      leaseRenewalIntervalInSeconds: 10
      statusPageUrlPath: /info
@@ -41,8 +41,8 @@ eureka:
     region: us-east-1
     registerWithEureka: true
     serviceUrl:
-      defaultZone: http://ec2-52-90-165-34.compute-1.amazonaws.com/eureka
-      us-east-1a: http://ec2-52-90-165-34.compute-1.amazonaws.com/eureka  
+      defaultZone: http://sansoft-eureka-discovery-server.us-east-1.elasticbeanstalk.com/eureka
+      us-east-1b: http://sansoft-eureka-discovery-server.us-east-1.elasticbeanstalk.com/eureka  
    server:
      waitTimeInMsWhenSyncEmpty: 0
  
